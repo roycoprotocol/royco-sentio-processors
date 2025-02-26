@@ -1,0 +1,266 @@
+type PoolVault @entity {
+  id: ID! # chainId_marketType_marketId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  strategyVaultContractAddress: String!
+  underlyingPoolAddress: String!
+  underlyingTokenAddress: String!
+  underlyingTokenDecimals: Int!
+  receiptTokenAddress: String!
+  receiptTokenDecimals: Int!
+  receiptTokenSymbol: String!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type PositionVault @entity {
+  id: ID! # chainId_marketType_marketId_userAddress
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  strategyVaultContractAddress: String!
+  userAddress: String!
+  liquidityPoolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenDecimals: Int!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type LPTokenEventVault @entity {
+  id: ID! # chainId_transactionHash_logIndex
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  fromAddress: String!
+  toAddress: String!
+  poolAddress: String!
+  underlyingTokenAddress: String!
+  amount: BigDecimal!
+  eventType: String!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type UserEventVault @entity {
+  id: ID! # chainId_transactionHash_logIndex
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  userAddress: String!
+  poolAddress: String!
+  underlyingTokenAddress: String!
+  amount: BigDecimal!
+  amountUsd: BigDecimal!
+  eventType: String!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type IncentiveClaimVault @entity {
+  id: ID! # chainId_transactionHash_logIndex
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  transactionSigner: String!
+  userAddress: String!
+  claimedTokenAddress: String!
+  amount: BigDecimal!
+  amountUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type HourlyPoolSnapshotVault @entity {
+  id: ID! # chainId_marketType_marketId_timestampId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  strategyVaultContractAddress: String!
+  liquidityPoolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigDecimal!
+  underlyingTokenAmountUsd: BigDecimal!
+  totalFeesUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type DailyPoolSnapshotVault @entity {
+  id: ID! # chainId_marketType_marketId_timestampId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  strategyVaultContractAddress: String!
+  liquidityPoolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigDecimal!
+  underlyingTokenAmountUsd: BigDecimal!
+  totalFeesUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type HourlyPositionSnapshotVault @entity {
+  id: ID! # chainId_marketType_marketId_userAddress_timestampId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  strategyVaultContractAddress: String!
+  userAddress: String!
+  liquidityPoolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigDecimal!
+  underlyingTokenAmountUsd: BigDecimal!
+  totalFeesUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type DailyPositionSnapshotVault @entity {
+  id: ID! # chainId_marketType_marketId_userAddress_timestampId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  strategyVaultContractAddress: String!
+  userAddress: String!
+  liquidityPoolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigDecimal!
+  underlyingTokenAmountUsd: BigDecimal!
+  totalFeesUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type PoolRecipe @entity {
+  id: ID! # chainId_marketType_marketId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  poolAddress: String!
+  poolSymbol: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenSymbol: String!
+  underlyingTokenDecimals: Int!
+  receiptTokenAddress: String!
+  receiptTokenSymbol: String!
+  receiptTokenDecimals: Int!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type HourlyPoolSnapshotRecipe @entity {
+  id: ID! # chainId_marketType_marketId_timestampId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  poolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigDecimal!
+  underlyingTokenAmountUsd: BigDecimal!
+  totalFeesUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type DailyPoolSnapshotRecipe @entity {
+  id: ID! # chainId_marketType_marketId_timestampId
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  poolAddress: String!
+  underlyingTokenIndex: Int!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigDecimal!
+  underlyingTokenAmountUsd: BigDecimal!
+  totalFeesUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+}
+
+type UserEventRecipe @entity {
+  id: ID! # chainId_transactionHash_logIndex
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  eventType: String!
+  userAddress: String!
+  takerAddress: String!
+  poolAddress: String!
+  underlyingTokenAddress: String!
+  amount: BigDecimal!
+  amountUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type IncentiveClaimRecipe @entity {
+  id: ID! # chainId_transactionHash_logIndex
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  transactionSigner: String!
+  userAddress: String!
+  claimedTokenAddress: String!
+  amount: BigDecimal!
+  amountUsd: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type OfferRecipe @entity {
+  id: ID! # chainId_marketType_offerSide_offerId
+  chainId: Int!
+  marketType: Int!
+  offerSide: Int!
+  offerId: String!
+  marketId: String!
+  accountAddress: String!
+  underlyingTokenAddress: String!
+  incentiveTokenAddresses: [String!]!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}
+
+type PositionRecipe @entity {
+  id: ID! # chainId_marketType_marketId_userAddress
+  chainId: Int!
+  marketType: Int!
+  marketId: String!
+  accountAddress: String!
+  underlyingTokenAddress: String!
+  underlyingTokenAmount: BigInt!
+  incentiveTokenAddresses: [String!]!
+  incentiveTokenAmounts: [BigInt!]!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+  logIndex: BigInt!
+}

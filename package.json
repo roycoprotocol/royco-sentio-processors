@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "royco-recipe-sonic",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "sentio build",
+    "gen": "sentio gen",
+    "test": "sentio test",
+    "upload": "sentio upload",
+    "postinstall": "sentio gen",
+    "call": "tsx tests/call.ts"
+  },
+  "dependencies": {
+    "@sentio/sdk": "^2.57.7"
+  },
+  "devDependencies": {
+    "@sentio/cli": "^2.25.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.5.2"
+  }
+}
