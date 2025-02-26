@@ -14,6 +14,8 @@ SELECT
     receiptTokenSymbol AS strategy_vault_receipt_token_symbol
 FROM
     `PoolVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### Position Snapshot
@@ -35,6 +37,8 @@ SELECT
     totalFeesUsd AS total_fees_usd
 FROM
     `DailyPositionSnapshotVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 #### Hourly
@@ -54,6 +58,8 @@ SELECT
     totalFeesUsd AS total_fees_usd
 FROM
     `HourlyPositionSnapshotVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### Pool Snapshot
@@ -74,6 +80,8 @@ SELECT
     totalFeesUsd AS total_fees_usd
 FROM
     `DailyPoolSnapshotVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 #### Hourly
@@ -92,6 +100,8 @@ SELECT
     totalFeesUsd AS total_fees_usd
 FROM
     `HourlyPoolSnapshotVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### ERC-20 LP Token Transfer Events
@@ -110,6 +120,8 @@ SELECT
     eventType AS event_type
 FROM
     `LPTokenEventVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### Events
@@ -129,6 +141,8 @@ SELECT
     eventType AS event_type
 FROM
     `UserEventVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### Incentive Claim Data
@@ -147,11 +161,15 @@ SELECT
     0 AS other_incentive_usd
 FROM
     `IncentiveClaimVault`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ## Royco Recipe Markets
 
 ### Pools
+
+The receipt token details are left as empty strings ("") or 0, depending on the column data type because recipe markets don't issue receipt tokens.
 
 ```sql
 SELECT
@@ -169,7 +187,13 @@ SELECT
     poolSymbol AS pool_symbol
 FROM
     `PoolRecipe`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
+
+### Position Snapshot
+
+Not required because liquidity can't be tracked in the recipe markets -- as discussed on Telegram.
 
 ### Pool Snapshot
 
@@ -188,6 +212,8 @@ SELECT
     totalFeesUsd AS total_fees_usd
 FROM
     `DailyPoolSnapshotRecipe`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 #### Hourly
@@ -205,6 +231,8 @@ SELECT
     totalFeesUsd AS total_fees_usd
 FROM
     `HourlyPoolSnapshotRecipe`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### Events
@@ -225,10 +253,26 @@ SELECT
     eventType AS event_type
 FROM
     `UserEventRecipe`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```
 
 ### Incentive Claim Data
 
 ```sql
-
+SELECT
+    toUnixTimestamp(blockTimestamp) AS timestamp,
+    chainId AS chain_id,
+    transactionHash AS transaction_hash,
+    logIndex AS log_index,
+    transactionSigner AS transaction_signer,
+    userAddress AS user_address,
+    claimedTokenAddress AS claimed_token_address,
+    amount AS amount,
+    amountUsd AS amount_usd,
+    0 AS other_incentive_usd
+FROM
+    `IncentiveClaimRecipe`
+WHERE
+    toUnixTimestamp(blockTimestamp) > TIMESTAMP('{{timestamp}}')
 ```

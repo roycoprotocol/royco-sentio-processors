@@ -16,10 +16,10 @@ export const SUBGRAPH_URL = {
 };
 
 // For Testing
-export const CHAIN = EthChainId.ETHEREUM;
+// export const CHAIN = EthChainId.ETHEREUM;
 
 // For Production
-// export const CHAIN_ID = EthChainId.SONIC_MAINNET;
+export const CHAIN = EthChainId.SONIC_MAINNET;
 
 export const CONTRACT = {
   [EthChainId.ETHEREUM]: {
@@ -33,11 +33,11 @@ export const CONTRACT = {
     },
   },
   [EthChainId.SONIC_MAINNET]: {
-    recipeMarketHub: {
+    recipemarkethub: {
       address: "0xfcc593ad3705ebcd72ec961c63eb484be795bdbd",
       startBlock: 4353631,
     },
-    wrappedVaultFactory: {
+    wrappedvaultfactory: {
       address: "0x7212d98a88d44f714fd29dd980cb846be8e7491a",
       startBlock: 4353631,
     },
