@@ -1,5 +1,9 @@
-import { CHAIN } from "./constants.js";
+import { EthChainId } from "@sentio/sdk/eth";
 
-export const generateId = (transactionHash: string, logIndex: number) => {
-  return `${CHAIN}_${transactionHash.toLowerCase()}_${logIndex}`;
+export const generateId = (
+  transactionHash: string,
+  logIndex: number,
+  chainId: EthChainId
+) => {
+  return `${chainId}_${transactionHash.toLowerCase()}_${logIndex}`;
 };
