@@ -169,6 +169,19 @@ type PoolRecipe @entity {
   logIndex: BigInt!
 }
 
+type Metric @entity {
+  id: ID! # name_category_timestamp
+  name: String!
+  contractAddress: String!
+  chainId: Int!
+  product: String!
+  category: String!
+  timestamp: BigInt!
+  value: BigDecimal!
+  accountAddress: String!
+  entityId: String!
+}
+
 type HourlyPoolSnapshotRecipe @entity {
   id: ID! # chainId_marketType_marketId_timestampId
   chainId: Int!
@@ -263,4 +276,20 @@ type PositionRecipe @entity {
   blockTimestamp: BigInt!
   transactionHash: String!
   logIndex: BigInt!
+  active: Boolean!
+  
+}
+
+
+
+type TokenDirectory @entity {
+  id: ID! # chainId-contractAddress
+  chainId: Int!
+  contractAddress: String!
+  symbol: String!
+  decimals: Int!
+  price: BigDecimal!
+  fdv: BigDecimal!
+  totalSupply: BigInt!
+  source: String!
 }

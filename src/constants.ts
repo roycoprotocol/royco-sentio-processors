@@ -42,4 +42,44 @@ export const CONTRACT = {
       startBlock: 4353631,
     },
   },
+  [EthChainId.BASE]: {
+    recipemarkethub: {
+      address: "0x783251f103555068c1e9d755f69458f39ed937c0",
+      startBlock: 23108227,
+    },
+    wrappedvaultfactory: {
+      address: "0x75e502644284edf34421f9c355d75db79e343bca",
+      startBlock: 22754606,
+    },
+  },
+  [EthChainId.ARBITRUM]: {
+    recipemarkethub: {
+      address: "0x783251f103555068c1e9d755f69458f39ed937c0",
+      startBlock: 280018459,
+    },
+    wrappedvaultfactory: {
+      address: "0x75e502644284edf34421f9c355d75db79e343bca",
+      startBlock: 277208990,
+    },
+  },
+  [EthChainId.HYPER_EVM]: {
+    recipemarkethub: {
+      address: "0x6af057b1c423d108ab710d6f4e3e46f3536787fd",
+      startBlock: 650861,
+    },
+    wrappedvaultfactory: {
+      address: "0xda0a91f0fcc2a7c1922165a28038d89babe8ccfa",
+      startBlock: 206979,
+    },
+  },
+  [EthChainId.CORN_MAIZENET]: {
+    recipemarkethub: {
+      address: "0x783251f103555068c1e9d755f69458f39ed937c0",
+      startBlock: 9044,
+    },
+    wrappedvaultfactory: {
+      address: "0x75e502644284edf34421f9c355d75db79e343bca",
+      startBlock: 9044,
+    },
+  },
 };
